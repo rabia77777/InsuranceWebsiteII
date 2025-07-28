@@ -1,0 +1,85 @@
+label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+}
+
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=tel],
+input[type=text],
+input[type=url],
+input[type=date],
+textarea,
+select {
+    font-size: 1.0rem;
+    color: #3F3844;
+    display: inline-block;
+    height: 40px;
+    margin: 0;
+    padding: 0 8px;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    display: flex;
+
+    &:hover {
+        border: 1px solid #b9b9b9;
+        border-top: 1px solid #a0a0a0;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    &:focus {
+        outline: none;
+        border: 1px solid #4d90fe;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+}
+
+select {
+    appearance: none;
+    /* Prevent browser default styles */
+    -webkit-appearance: none;
+    /* For older versions of Safari */
+    -moz-appearance: none;
+    /* For older versions of Firefox */
+    background-image: url('../../cdn.example.com/select-drop-down-arrow.png');
+    /* Replace with your custom arrow image */
+    background-position: calc(100% - 8px) center;
+    background-repeat: no-repeat;
+    padding-right: 24px;
+    /* Adjust padding to accommodate the arrow */
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+    /*    display: none; /* Hide the default date icon for Chrome and Safari */
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    width: 16px;
+    height: 100%;
+    cursor: pointer;
+}
+
+input[type=date] {
+    background-image: url('../icons/input-date-icon.svg');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 8px) center;
+    background-size: 16px;
+    padding-right: 32px;
+    width: 150px;
+    position: relative;
+}
+
+input[readonly] {
+    background-color: #f0f0f0; /* Light gray background */
+    color: #464646; /* Gray text */
+    cursor: not-allowed; /* Change cursor to not-allowed */
+}
