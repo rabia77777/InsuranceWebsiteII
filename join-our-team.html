@@ -32,7 +32,7 @@ gtag('config', 'G-VM52E4TK73');
 <meta name="keywords" content="PreetiSidhu Insurance careers, job opportunities, insurance careers, work at PreetiSidhu Insurance, join our team, Brampton jobs, insurance advisor jobs, careers in insurance">
 
 <!-- Canonical Tag -->
-<link rel="canonical" href="join-our-team-2.html">
+<link rel="canonical" href="join-our-team.html">
 
 <!-- Open Graph Meta Tags -->
 <meta property="og:title" content="Join Our Team - PreetiSidhu Insurance">
@@ -215,6 +215,7 @@ gtag('config', 'G-VM52E4TK73');
             </div>
         </li>
         <li><a href="join-our-team.html">Join our Team</a></li>
+        <li  style="border: 1px solid #49B0D9; background-color: #49B0D9; padding: 0px 8px;"><a href="memberlogin.html">Advisor Login</a></li>
     </nav>
 </div>    <main>
         <div class="article-container">
@@ -223,32 +224,33 @@ gtag('config', 'G-VM52E4TK73');
                 <p class="subhead2 accent-color margin-top-36">Please fill in details and click submit, we will get back to you.</p>
                 <p class="button-grey-color caption" style="margin-top:0px"><img src="icons/lock-icon.svg" style="margin-right: 4px;">Your personal information is safe with us</p>
                 <div class="form-container">
-                    <form id="contactForm" method="post">
-                        <div class="form-row">
-                            <div class="form-col">
-                                <label for="complete-name">Complete name<span class="accent-color"> *</span></label>
-                                <input type="text" id="complete-name" name="complete-name" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-col">
-                                <label for="contact-number">Contact number<span class="accent-color"> *</span></label>
-                                <input type="text" id="contact-number" name="contact-number" required>
-                            </div>
-                            <div class="form-col">
-                                <label for="user-email">Email address<span class="accent-color"> *</span></label>
-                                <input type="email" id="user-email" name="user-email" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-col">
-                                <label for="user-comments">Comments</label>
-                                <textarea id="user-comments" name="user-comments" style="height: 120px;"></textarea>
-                            </div>
-                        </div>
-                        <div class="g-recaptcha margin-bottom-24" data-sitekey="6LfBG9MpAAAAAIK7sf-AapANKjB5nUKw4B2NUFPx"></div>
-                        <input type="submit" class="button-primary-blue" value="Send Message">
-                    </form>
+               <form id="contactForm" method="POST" action="https://hooks.zapier.com/hooks/catch/24171549/u656uyn/">
+				  <div class="form-row">
+					<div class="form-col">
+					  <label for="complete-name">Complete name<span class="accent-color"> *</span></label>
+					  <input type="text" id="complete-name" name="name" required>
+					</div>
+				  </div>
+				  <div class="form-row">
+					<div class="form-col">
+					  <label for="contact-number">Contact number<span class="accent-color"> *</span></label>
+					  <input type="text" id="contact-number" name="contact_number" required>
+					</div>
+					<div class="form-col">
+					  <label for="user-email">Email address<span class="accent-color"> *</span></label>
+					  <input type="email" id="user-email" name="email" required>
+					</div>
+				  </div>
+				  <div class="form-row">
+					<div class="form-col">
+					  <label for="user-comments">Comments</label>
+					  <textarea id="user-comments" name="comments" style="height: 120px;"></textarea>
+					</div>
+				  </div>
+				  <div class="g-recaptcha margin-bottom-24" data-sitekey="6LfBG9MpAAAAAIK7sf-AapANKjB5nUKw4B2NUFPx"></div>
+				  <input type="submit" class="button-primary-blue" value="Send Message">
+		</form>
+
                 </div>
             </div>
         </div>
@@ -341,6 +343,7 @@ gtag('config', 'G-VM52E4TK73');
     <!-- Add your JavaScript code for interactivity and functionality here -->
     <script src="js/accordion.js"></script>
     <script>
+	
         document.addEventListener('DOMContentLoaded', function() {
             var mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
 
@@ -360,52 +363,10 @@ gtag('config', 'G-VM52E4TK73');
                 });
             });
 
-            const urlParams = new URLSearchParams(window.location.search);
-            const status = urlParams.get('status');
-
-            if (status === 'success') {
-                // Show success message
-                alert('Message sent successfully!');
-            } else if (status === 'fail') {
-                // Show fail message
-                alert('Failed to send message. Please try again.');
-            }
+        
         });
 
-        $(document).ready(function() {
-            $('#contactForm').submit(function(event) {
-                // Prevent default form submission
-                event.preventDefault();
-
-                // Check if reCAPTCHA is validated
-                if (grecaptcha.getResponse() === '') {
-                    alert('Please complete the reCAPTCHA');
-                    return;
-                }
-
-                // Get form data
-                var formData = $(this).serialize();
-
-                // Send form data via AJAX
-                $.ajax({
-                    type: 'POST',
-                    url: 'sendjoinourteamemail.php',
-                    data: formData,
-                    success: function(response) {
-                        // Handle success response, if needed
-                        alert(response);
-                        $('#contactForm')[0].reset();
-                        // Redirect to sendemail.php after successful confirmation
-                        //window.location = "sendemail.php";
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle error
-                        console.error(xhr.responseText);
-                        alert("Error: " + xhr.responseText);
-                    }
-                });
-            });
-        });
+       
 
         function toggleMobileNav() {
             var mobileNav = document.getElementById('mobileNav');
@@ -418,6 +379,8 @@ gtag('config', 'G-VM52E4TK73');
             // Toggle the menu icon
             menuIcon.src = mobileNav.style.display === 'block' ? 'icons/menu-icon-close.svg' : 'icons/menu-icon.svg';
         }
+		
+
     </script>
 </body>
 
