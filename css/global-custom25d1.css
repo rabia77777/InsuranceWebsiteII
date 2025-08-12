@@ -19,7 +19,7 @@
 }
 
 .logo img {
-    max-width: 100%;
+    max-width: 10%;
 }
 
 .actions {
@@ -946,6 +946,10 @@ td {
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
+
+    .logo img {
+    max-width: 20%;
+}
     .desktop-header-bg {
         display: none;
         /* Display container 1 on desktop */
