@@ -377,10 +377,48 @@ gtag('config', 'G-VM52E4TK73');
                 mobileNav.style.display = 'block'; // Show the mobile navigation if it's currently hidden
             }
             // Toggle the menu icon
-            menuIcon.src = mobileNav.style.display === 'block' ? 'icons/menu-icon-close.svg' : 'icons/menu-icon.svg';
+            menuIcon.src = mobileNav.style.display === 'block' ? 'icons/icons8-close.svg' : 'icons/menu-icon5f53.svg';
         }
 		
 
+
+
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // stop form default submission
+
+  const form = this;
+  const data = new FormData(form); // collect form data
+
+  // Convert FormData to URL encoded string for application/x-www-form-urlencoded
+  const formDataSerialized = new URLSearchParams(data).toString();
+
+  fetch(form.action, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: formDataSerialized
+  })
+  .then(response => {
+    if (response.ok) {
+      // Show thank you message
+      form.style.display = 'none';
+      const thankYouMessage = document.createElement('p');
+      thankYouMessage.textContent = 'Thank you! Your message has been sent successfully.';
+      thankYouMessage.style.color = '#007BFF';
+      form.parentNode.appendChild(thankYouMessage);
+    } else {
+      alert('Oops! There was a problem submitting your form.');
+    }
+  })
+  .catch(error => {
+    alert('Network error. Please try again later.');
+    console.error('Error:', error);
+  });
+});
+
+
+		
     </script>
 </body>
 
