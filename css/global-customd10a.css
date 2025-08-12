@@ -1258,6 +1258,9 @@ td {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .logo img {
+    max-width: 20%; /* or 180px, depending on the design */
+  }
     .why-choose-us-section {
         padding: 60px 16px;
     }
