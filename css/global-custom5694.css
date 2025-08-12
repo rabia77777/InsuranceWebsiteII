@@ -946,6 +946,9 @@ td {
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
+    .logo img {
+    max-width: 20%; /* or 180px, depending on the design */
+  }
     .desktop-header-bg {
         display: none;
         /* Display container 1 on desktop */
