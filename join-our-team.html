@@ -223,7 +223,7 @@ gtag('config', 'G-VM52E4TK73');
                 <p class="subhead2 accent-color margin-top-36">Please fill in details and click submit, we will get back to you.</p>
                 <p class="button-grey-color caption" style="margin-top:0px"><img src="icons/lock-icon.svg" style="margin-right: 4px;">Your personal information is safe with us</p>
                 <div class="form-container">
-               <form id="contactForm" method="POST" action="https://hooks.zapier.com/hooks/catch/24171549/u656uyn/">
+               <form id="contactForm" method="POST" action="https://us-central1-cygnisoft-notification-1.cloudfunctions.net/sendEmail">
 				  <div class="form-row">
 					<div class="form-col">
 					  <label for="complete-name">Complete name<span class="accent-color"> *</span></label>
@@ -386,34 +386,33 @@ document.getElementById('contactForm').addEventListener('submit', function(event
   event.preventDefault(); // stop form default submission
 
   const form = this;
-  const data = new FormData(form); // collect form data
+  const formData = new FormData(form);
 
-  // Convert FormData to URL encoded string for application/x-www-form-urlencoded
-  const formDataSerialized = new URLSearchParams(data).toString();
+  // Convert FormData to JSON
+  const data = {};
+  formData.forEach((value, key) => data[key] = value);
 
   fetch(form.action, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/json', // your Cloud Function expects JSON
     },
-    body: formDataSerialized
+    body: JSON.stringify(data)
   })
-  .then(response => {
-    if (response.ok) {
-      // Show thank you message
-      form.style.display = 'none';
-      const thankYouMessage = document.createElement('p');
-      thankYouMessage.textContent = 'Thank you! Your message has been sent successfully.';
-      thankYouMessage.style.color = '#007BFF';
-      form.parentNode.appendChild(thankYouMessage);
-    } else {
-      alert('Oops! There was a problem submitting your form.');
-    }
+  .then(response => response.json()) // parse JSON response
+  .then(result => {
+    console.log('Success:', result);
+    form.style.display = 'none';
+    const thankYouMessage = document.createElement('p');
+    thankYouMessage.textContent = 'Thank you! Your message has been sent successfully.';
+    thankYouMessage.style.color = '#007BFF';
+    form.parentNode.appendChild(thankYouMessage);
   })
   .catch(error => {
-    alert('Network error. Please try again later.');
     console.error('Error:', error);
+    alert('Oops! Something went wrong. Please try again later.');
   });
+  
 });
 
 
